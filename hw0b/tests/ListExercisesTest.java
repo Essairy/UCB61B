@@ -56,7 +56,6 @@ public class ListExercisesTest {
     @DisplayName("Test countOccurrencesOfC correctness")
     public void testCountOccurrencesOfC() {
         List<String> lst = List.of("hello", "world", "welcome");
-
         assertThat(ListExercises.countOccurrencesOfC(lst, 'o')).isEqualTo(3);
         assertThat(ListExercises.countOccurrencesOfC(lst, 'a')).isEqualTo(0);
     }
