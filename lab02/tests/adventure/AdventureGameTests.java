@@ -48,8 +48,8 @@ public class AdventureGameTests {
     }
 
 
-    /** Runs the adventure game until the given stage with the given input and answer files,
-     *  and asserts with the given assertion message that they match.*/
+    /** Runs the adventrtion message ture game until the given stage with the given input and answer files,
+     *      *  and asserts with the given assehat they match.*/
     private void runUntilStage(String stage, String inputFile, String answersFile,
                                CaptureSystemOutput.OutputCapture capture,
                                String assertionMessage) {

@@ -54,7 +54,7 @@ public class SpeciesListStage implements AdventureStage {
         this.handleResponses(REFERENCE_2);
 
         System.out.println("Well, there's nothing left here! press enter to move.");
-        this.handleResponses(REFERENCE_3);
+//        this.handleResponses(REFERENCE_3);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class SpeciesListStage implements AdventureStage {
      */
     public static double arraySimilarity(List<String> listOne, List<String> listTwo) {
         List<String> copy = new ArrayList<>(listOne);
-        int similarObjects = 0;
+        double similarObjects = 0;
         for (String o : listTwo) {
             if (copy.contains(o)) {
                 similarObjects++;
