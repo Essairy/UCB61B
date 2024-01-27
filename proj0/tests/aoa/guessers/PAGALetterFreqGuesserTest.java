@@ -44,7 +44,7 @@ public class PAGALetterFreqGuesserTest {
     public void testGetGuess_e__PatternUntilCool() {
         PAGALetterFreqGuesser palfg = new PAGALetterFreqGuesser("data/example.txt");
 
-        // check that the next guess is a if the pattern is currently -e-- and only e has been guessed.
+        // check that the next guess i s a if thepattern is currently -e-- and only e has been guessed.
         // this is because there are 2 as and 2 os, but a comes earlier in the alphabet
         char guess = palfg.getGuess("-e--", List.of('e'));
         assertThat(guess).isEqualTo('a');
