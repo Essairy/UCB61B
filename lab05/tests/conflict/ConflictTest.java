@@ -22,7 +22,8 @@ public class ConflictTest {
     public void testConflictExists() {
         List<String> fileContents = readAllLines(HELLO_FILE);
         // regex pattern match the desired merge conflict
-        String pattern = "<<<<<<< HEADHello, I am a 61B student!=======Hello, I am NOT a 61A student!>>>>>>>.*";
+        String pattern = "<<<<<<< HEADHello, I am a new 61B student!=======Hello, I am NOT a 61B student!>>>>>>>.*";
+
         // test conflict resolved first, then if that fails, run this test
         try {
             testConflictResolved();
