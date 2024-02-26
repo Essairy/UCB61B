@@ -1,7 +1,6 @@
 package ngordnet.ngrams;
 
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * An object for mapping a year number (e.g. 1996) to numerical data. Provides
@@ -27,16 +26,14 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      * inclusive of both end points.
      */
     public TimeSeries(TimeSeries ts, int startYear, int endYear) {
-        super();
-        // TODO: Fill in this constructor.
+        super(ts.subMap(startYear,true,endYear,true));
     }
 
     /**
      * Returns all years for this TimeSeries (in any order).
      */
     public List<Integer> years() {
-        // TODO: Fill in this method.
-        return null;
+        return new ArrayList<>(keySet());
     }
 
     /**
@@ -44,8 +41,12 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      * Must be in the same order as years().
      */
     public List<Double> data() {
-        // TODO: Fill in this method.
-        return null;
+        List<Integer> yearsList = years();
+        List<Double> dataList = new ArrayList<>();
+        for (int i:yearsList){
+            dataList.add(get(i));
+        }
+        return dataList;
     }
 
     /**
@@ -58,8 +59,12 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      * should store the value from the TimeSeries that contains that year.
      */
     public TimeSeries plus(TimeSeries ts) {
-        // TODO: Fill in this method.
-        return null;
+        TimeSeries sumTime = new TimeSeries();
+        sumTime.putAll(this);
+        for (int i:ts.years()){
+            sumTime.merge(i,ts.get(i),Double::sum);
+        }
+        return sumTime;
     }
 
     /**
@@ -72,8 +77,16 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      * If TS has a year that is not in this TimeSeries, ignore it.
      */
     public TimeSeries dividedBy(TimeSeries ts) {
-        // TODO: Fill in this method.
-        return null;
+        TimeSeries divideTime = new TimeSeries();
+        divideTime.putAll(this);
+        for (int year: divideTime.years()){
+            if (!ts.containsKey(year)){
+                throw new IllegalArgumentException("year not exist");
+            } else {
+                divideTime.merge(year,get(year),(oldValue,newValue)->oldValue/newValue);
+            }
+        }
+        return divideTime;
     }
 
     // TODO: Add any private helper methods.
