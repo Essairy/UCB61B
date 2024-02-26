@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.google.common.truth.Truth.assertThat;
 
+import static com.google.common.truth.Truth.assertThat;
 /** Unit Tests for the TimeSeries class.
  *  @author Josh Hug
  */

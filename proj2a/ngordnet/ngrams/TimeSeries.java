@@ -62,7 +62,11 @@ public class TimeSeries extends TreeMap<Integer, Double> {
         TimeSeries sumTime = new TimeSeries();
         sumTime.putAll(this);
         for (int i:ts.years()){
-            sumTime.merge(i,ts.get(i),Double::sum);
+            if (containsKey(i)){
+                sumTime.merge(i,ts.get(i),Double::sum);
+            } else {
+                sumTime.put(i,ts.get(i));
+            }
         }
         return sumTime;
     }
@@ -81,9 +85,9 @@ public class TimeSeries extends TreeMap<Integer, Double> {
         divideTime.putAll(this);
         for (int year: divideTime.years()){
             if (!ts.containsKey(year)){
-                throw new IllegalArgumentException("year not exist");
+                throw new IllegalArgumentException();
             } else {
-                divideTime.merge(year,get(year),(oldValue,newValue)->oldValue/newValue);
+                divideTime.merge(year,ts.get(year),(oldValue,newValue)->oldValue/newValue);
             }
         }
         return divideTime;
