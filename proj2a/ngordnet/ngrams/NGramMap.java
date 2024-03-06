@@ -142,6 +142,9 @@ public class NGramMap {
         return allWordsCounts;
     }
 
+    public boolean countainsWord(String word){
+        return this.wordsYear.containsKey(word);
+    }
     // TODO: Add any private helper methods.
     // TODO: Remove all TODO comments before submitting.
 }
